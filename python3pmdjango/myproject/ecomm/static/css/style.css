@@ -1,0 +1,26 @@
+.maindiv {
+    border: 5px solid red;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* width: 500px;
+        height: 200px; */
+}
+
+.mydiv2 {
+    border: 5px solid blue;
+}
+
+.childdiv {
+    border: 2px solid green;
+    margin: 10px
+}
+
+.form {
+    border: 5px solid red;
+    text-align: center;
+    padding: 50px
+}

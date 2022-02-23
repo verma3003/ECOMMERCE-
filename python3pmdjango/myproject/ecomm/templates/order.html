@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load cart %}
+{% block content %}
+<table class="table">
+    <tr>
+        <th scope="col">S. no.</th>
+        <th scope="col"> Product Image</th>
+        <th scope="col"> Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Total qantity</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+    </tr>
+    {% for items in orderss %}
+    <tr>
+        <th>{{forloop.counter}}</th>
+        <th><img src="{{items.product.image.url}}" alt="wrong"></th>
+        <th>{{items.name}}</th> 
+        <th>{{items.quantity}}</th> 
+        <th>{{items.price}}</th> 
+        <th>{{items.price|multiplyprice:items.quantity}}</th> 
+        <th>{{items.date}}</th> 
+        <th>{{items.status}}</th> 
+    </tr>
+    {% endfor %}
+    
+
+    <tfoot>
+        <tr align="center">
+            <th colspan="5"> Total Pay</th>
+            <th>{{tp}}</th>
+        </tr>
+    </tfoot>
+
+
+{% endblock content %}
+
+

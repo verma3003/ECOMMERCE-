@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+contact
+
+{% endblock title %}
+
+
+{% block content %}
+        {% comment %} <h1>{{error_msg}}</h1>
+
+    {% comment %} <div class = "form">
+        <form action="{% url 'save' %}" method = "POST">
+            {% csrf_token %}
+            <label for="#firstname">First Name :</label>
+            <input type="text" name = "fname" id ="firstname" placeholder = "enter your name...">
+            <br>
+            <hr>
+            <label for="#lastname">Last Name : </label>
+            <input type="text" name = "lname" id ="lastname">
+             <br>
+            <hr>
+            <label for="#email">Email : </label>
+            <input type="email" name = "email" id ="email">
+            <br>
+            <hr>
+            <label for="#mobile">Mobile : </label>
+            <input type="number" name = "mobile" id ="mobile">
+            <br>
+            <hr>
+            <label for="#password">Password : </label>
+            <input type="password" name = "password" id ="password">
+            <br>
+            <hr>
+            <label for="#gender">Gender : </label>
+            <input type="radio" name = "gender" value = "male" > Male
+            <input type="radio" name = "gender" value = "female" > Female
+            <br>
+            <hr>
+            <input type="submit" value = "submit">
+        </form>
+    </div> {% endcomment %}
+
+    {% comment %} login button {% endcomment %}
+
+{% comment %}  
+    <form action="{% url 'login' %}" method = "POST">
+        {% csrf_token %}
+        <label for="">email</label>
+        <input type="email" name = "email" placeholder = "email">
+        <br>
+        <br>
+         <label for="">password</label>
+        <input type="password" name = "passwod" placeholder ="***">
+        <br>
+        <br>
+        <input type="submit" value = "Login">
+    </form> {% endcomment %}
+
+
+
+
+
+    {% for i in fetch_img %}
+    <img src="{{i.image.url}}" alt="" height='500px'wight='500px'>
+    
+    {% endfor %}
+  
+{% endblock content %}
+
+<button name="crelement" >create</button>
+
+

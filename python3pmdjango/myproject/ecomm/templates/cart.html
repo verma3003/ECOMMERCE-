@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart{% endblock title %}
+{% load cart %}
+{% block content %}
+
+        <table class="table">
+            <tr>
+                <th>S. no.</th>
+                <th> Product Image</th>
+                <th> Product Name</th>
+                <th>Product Price</th>
+                <th>Quantity</th>
+            </tr>
+            {% if cart_pro %}
+            {% for cart in cart_pro  %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><img src="{{cart.image.url}}" alt="" height="200px" width="200px"></td>
+                <td>{{cart.name}}</td>
+                <td>{{cart.price}}</td>
+                <td>{{cart|cartquant:request.session.cart}}</td>
+                <td>{{cart|total_price:request.session.cart}}</td>
+            </tr>
+            {% endfor %}
+            <tfoot>
+                <tr>
+                    <td>Total price </td>
+                    <td>{{cart_pro|grand_total:request.session.cart}}</td>
+                </tr>
+
+            </tfoot>
+            <div class="m-3 p-3">
+               
+            </div>
+         </table>
+        <a data-bs-toggle="modal" data-bs-target="#checkout" class="btn btn-dark border rounded col-lg-3 float-end">
+            Checkout
+        </a>
+        <!-- Button trigger modal -->
+
+  {% else %}
+  <h1>PLEASE ADD PRODUCT</h1>
+  {% endif %}
+  
+  <!-- Modal -->
+  <div class="modal fade" id="checkout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">checkout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" name="address" id="address" class= "form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="text" name="mobile" id="mobile" class= "form-control">
+                </div>
+                <input type="submit" class="btn btn-primary" value="checkout">
+
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+
+
+
+
+
